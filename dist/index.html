@@ -6,9 +6,9 @@
 
     <!-- Primary -->
     <title>Dontae Lopez — Entrepreneur, Researcher, Athlete</title>
-    <meta name="description" content="Dontae Lopez is an entrepreneur, researcher, and athlete. CEO of Threeum. Creative Director of Muerte Studio. Prospect athlete under Mission Twelve.">
+    <meta name="description" content="Dontae Lopez is an entrepreneur, researcher, and athlete. CEO of Threeum. Creative Director of Muerte Studio. Prospect athlete under Mission Twelve. Originally from Colorado Springs.">
     <meta name="author" content="Dontae Lopez">
-    <meta name="keywords" content="Dontae Lopez, Threeum, Muerte Studio, Mission Twelve, Ground Zero, entrepreneur, researcher, athlete, Colorado">
+    <meta name="keywords" content="Dontae Lopez, Threeum, Muerte Studio, Mission Twelve, Ground Zero, entrepreneur, researcher, athlete, Colorado Springs, Denver, CEO">
     <link rel="canonical" href="https://dontaelopez.com/">
 
     <!-- Open Graph -->
@@ -17,11 +17,15 @@
     <meta property="og:title" content="Dontae Lopez — Entrepreneur, Researcher, Athlete">
     <meta property="og:description" content="CEO of Threeum. Creative Director of Muerte Studio. Prospect athlete under Mission Twelve.">
     <meta property="og:image" content="https://dontaelopez.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Dontae Lopez">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@lopezdontae">
+    <meta name="twitter:creator" content="@lopezdontae">
     <meta name="twitter:title" content="Dontae Lopez — Entrepreneur, Researcher, Athlete">
     <meta name="twitter:description" content="CEO of Threeum. Creative Director of Muerte Studio. Prospect athlete under Mission Twelve.">
     <meta name="twitter:image" content="https://dontaelopez.com/og-image.png">
@@ -33,17 +37,18 @@
     <meta name="theme-color" content="#000000">
 
     <!-- Misc SEO -->
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
     <meta name="format-detection" content="telephone=no">
 
-    <!-- Structured Data -->
+    <!-- Structured Data: Person -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Dontae Lopez",
       "url": "https://dontaelopez.com",
+      "image": "https://dontaelopez.com/og-image.png",
       "jobTitle": ["CEO", "Creative Director", "Athlete"],
       "worksFor": [
         {
@@ -62,9 +67,16 @@
       },
       "homeLocation": {
         "@type": "Place",
-        "name": "Colorado Springs, Colorado"
+        "name": "Colorado Springs, Colorado",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Colorado Springs",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        }
       },
       "description": "Entrepreneur, researcher, and athlete. CEO of Threeum, Creative Director of Muerte Studio, prospect athlete under Mission Twelve.",
+      "knowsAbout": ["Entrepreneurship", "Biological Computing", "Athletics", "Creative Direction"],
       "sameAs": [
         "https://x.com/lopezdontae",
         "https://www.instagram.com/lopezdontae",
@@ -74,14 +86,60 @@
     }
     </script>
 
-    <!-- Fonts -->
+    <!-- Structured Data: WebSite (enables sitelinks search) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Dontae Lopez",
+      "url": "https://dontaelopez.com"
+    }
+    </script>
+
+    <!-- Fonts: swap display for faster paint -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-DQGux_VF.js"></script>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <script type="module" crossorigin src="/assets/index-D6gUYlLE.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/three-BUAgunp6.js">
     <link rel="stylesheet" crossorigin href="/assets/index-CIYZmoZt.css">
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Crawlable content for search engines (hidden when JS runs) -->
+    <noscript>
+      <style>
+        .noscript-content { font-family: Inter, sans-serif; color: #fff; background: #000; padding: 2rem; max-width: 800px; margin: 0 auto; }
+        .noscript-content h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .noscript-content h2 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.5rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; }
+        .noscript-content p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem; font-weight: 300; }
+        .noscript-content a { color: #fff; }
+        .noscript-content nav { margin-top: 2rem; }
+        .noscript-content nav a { margin-right: 1.5rem; font-size: 0.875rem; }
+      </style>
+      <div class="noscript-content">
+        <h1>Dontae Lopez</h1>
+        <h2>Who</h2>
+        <p>Dontae Lopez is an entrepreneur, researcher, and athlete.</p>
+        <p>He is the CEO of <a href="https://threeum.com">Threeum</a>. He is the Creative Director of Muerte Studio. He is a prospect athlete under Mission Twelve and a part of the Ground Zero series.</p>
+        <p>He is originally from Colorado, born in Colorado Springs.</p>
+        <h2>Focus</h2>
+        <p>He is drawn to the hardest version of everything. The research that has no clear answer yet. The business that has no playbook. The sport that demands everything and negotiates nothing. The challenge is not a byproduct of the work. It is the point.</p>
+        <h2>Philosophy</h2>
+        <p>He believes the work speaks for itself if you let it. That means taking the time to get it right, resisting the pressure to move fast when the situation calls for patience, and holding the same standard whether anyone is watching or not. The domain does not matter. The discipline does.</p>
+        <h2>Contact</h2>
+        <p>For business opportunities and investments, sponsorships, or general inquiries.</p>
+        <nav>
+          <a href="https://x.com/lopezdontae">X / Twitter</a>
+          <a href="https://www.instagram.com/lopezdontae">Instagram</a>
+          <a href="https://www.linkedin.com/in/dontaelopez">LinkedIn</a>
+          <a href="https://tiktok.com/@DontaeLopez">TikTok</a>
+        </nav>
+      </div>
+    </noscript>
+
   </body>
 </html>

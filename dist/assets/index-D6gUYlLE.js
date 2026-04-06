@@ -1,24 +1,4 @@
-/**
- * DONTAE LOPEZ — Yuga Labs style halftone WebGL
- *
- * This bypasses React entirely. We build the DOM + WebGL from scratch.
- * The .jsx extension is kept so Vite's entry point doesn't break.
- */
-
-import {
-  Camera, CanvasTexture, Color, HalfFloatType, LinearFilter,
-  Mesh, NearestFilter, PlaneGeometry, RGBAFormat, RepeatWrapping,
-  Scene, ShaderMaterial, TextureLoader, Vector2, Vector3, Vector4,
-  WebGLRenderTarget, WebGLRenderer
-} from 'three';
-import './index.css';
-
-// ═══════════════════════════════════════════════
-//  DOM SETUP
-// ═══════════════════════════════════════════════
-
-const root = document.getElementById('root');
-root.innerHTML = `
+import{P as $,C as j,W as ye,S as K,T as be,R as k,L as M,a as X,V as f,b as xe,c as Q,d as q,M as J,e as we,f as _e,H as Te,g as Le,N as W}from"./three-BUAgunp6.js";(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))i(o);new MutationObserver(o=>{for(const l of o)if(l.type==="childList")for(const g of l.addedNodes)g.tagName==="LINK"&&g.rel==="modulepreload"&&i(g)}).observe(document,{childList:!0,subtree:!0});function t(o){const l={};return o.integrity&&(l.integrity=o.integrity),o.referrerPolicy&&(l.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?l.credentials="include":o.crossOrigin==="anonymous"?l.credentials="omit":l.credentials="same-origin",l}function i(o){if(o.ep)return;o.ep=!0;const l=t(o);fetch(o.href,l)}})();const De=document.getElementById("root");De.innerHTML=`
   <div class="webgl" id="webgl"></div>
 
   <!-- Page layer: sits over WebGL, holds page content -->
@@ -254,183 +234,13 @@ root.innerHTML = `
       <a href="/contact" data-nav="contact" class="mobile-menu__link">Contact</a>
     </nav>
   </div>
-`;
-
-
-// ═══════════════════════════════════════════════
-//  PAGE ROUTER + TRANSITIONS
-// ═══════════════════════════════════════════════
-
-let currentPage = 'home';
-let isTransitioning = false;
-
-function navigateTo(pageName) {
-  if (pageName === currentPage || isTransitioning) return;
-  isTransitioning = true;
-
-  // Close mobile menu if open
-  closeMobileMenu();
-
-  const leaving = document.querySelector(`.page[data-page="${currentPage}"]`);
-  const entering = document.querySelector(`.page[data-page="${pageName}"]`);
-  if (!entering) { isTransitioning = false; return; }
-
-  const goingToContent = pageName !== 'home';
-  const leavingContent = currentPage !== 'home';
-
-  // Remove active from leaving page
-  leaving.classList.remove('--active');
-
-  if (goingToContent) {
-    // Set white theme for content pages
-    document.documentElement.style.setProperty('--background', '#fff');
-    document.documentElement.style.setProperty('--color', '#000');
-
-    // Clear any inline styles from previous visits
-    entering.querySelectorAll('.line__inner').forEach(el => el.removeAttribute('style'));
-    entering.querySelectorAll('.page__grid').forEach(el => el.removeAttribute('style'));
-
-    // Remove --active so CSS resets to hidden state
-    entering.classList.remove('--active');
-    void entering.offsetHeight; // force reflow
-
-    setTimeout(() => {
-      entering.classList.add('--active');
-      currentPage = pageName;
-      setTimeout(() => { isTransitioning = false; }, 600);
-    }, leavingContent ? 150 : 50);
-
-  } else {
-    // CONTENT → HOME
-    setTimeout(() => {
-      document.documentElement.style.setProperty('--background', '#000');
-      document.documentElement.style.setProperty('--color', '#fff');
-      entering.classList.add('--active');
-      currentPage = pageName;
-      isTransitioning = false;
-    }, 400);
-  }
-}
-
-// Mobile menu
-let menuOpen = false;
-function openMobileMenu() {
-  menuOpen = true;
-  document.getElementById('mobileMenu').classList.add('--open');
-  document.getElementById('menuToggle').textContent = 'Close';
-}
-function closeMobileMenu() {
-  menuOpen = false;
-  document.getElementById('mobileMenu').classList.remove('--open');
-  document.getElementById('menuToggle').textContent = 'Menu';
-}
-document.getElementById('menuToggle').addEventListener('click', (e) => {
-  e.preventDefault();
-  menuOpen ? closeMobileMenu() : openMobileMenu();
-});
-
-// (uniform animations handled by entrance timeline below)
-
-// Nav click handlers
-document.querySelectorAll('[data-nav]').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    navigateTo(link.dataset.nav);
-  });
-});
-
-// ═══════════════════════════════════════════════
-//  CONTACT TABS + FORMS
-// ═══════════════════════════════════════════════
-
-document.querySelectorAll('.contact-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = tab.dataset.tab;
-    // Switch active tab
-    document.querySelectorAll('.contact-tab').forEach(t => t.classList.remove('--active'));
-    tab.classList.add('--active');
-    // Switch active form
-    document.querySelectorAll('.contact-form-wrap').forEach(f => f.classList.remove('--active'));
-    const form = document.querySelector(`.contact-form-wrap[data-form="${target}"]`);
-    if (form) form.classList.add('--active');
-  });
-});
-
-// Form submission via Formsubmit.co
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/dontaelopez@protonmail.com';
-
-document.querySelectorAll('.contact-form').forEach(form => {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('.form-submit');
-    const originalText = btn.textContent;
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    const formType = form.dataset.formType;
-    const data = new FormData(form);
-    data.append('_subject', `[dontaelopez.com] ${formType} inquiry`);
-    data.append('_template', 'table');
-    data.append('_captcha', 'false');
-    data.append('Form Type', formType);
-
-    fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: data,
-    })
-    .then(res => res.json())
-    .then(() => {
-      btn.textContent = 'Sent';
-      btn.classList.add('--sent');
-      form.reset();
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.classList.remove('--sent');
-        btn.disabled = false;
-      }, 3000);
-    })
-    .catch(() => {
-      btn.textContent = 'Error — try again';
-      btn.disabled = false;
-      setTimeout(() => { btn.textContent = originalText; }, 3000);
-    });
-  });
-});
-
-// ═══════════════════════════════════════════════
-//  HELPERS
-// ═══════════════════════════════════════════════
-
-function createFBO(w, h, type) {
-  return new WebGLRenderTarget(w, h, {
-    minFilter: type || LinearFilter,
-    magFilter: type || LinearFilter,
-    format: RGBAFormat,
-    type: HalfFloatType,
-    depthBuffer: false,
-    stencilBuffer: false,
-  });
-}
-
-function createDoubleFBO(w, h, type) {
-  return {
-    read: createFBO(w, h, type),
-    write: createFBO(w, h, type),
-    swap() { const t = this.read; this.read = this.write; this.write = t; },
-  };
-}
-
-// Shared fullscreen triangle
-const fsTriVert = `
+`;let b="home",x=!1;function Se(e){if(e===b||x)return;x=!0,Z();const a=document.querySelector(`.page[data-page="${b}"]`),t=document.querySelector(`.page[data-page="${e}"]`);if(!t){x=!1;return}const i=e!=="home",o=b!=="home";a.classList.remove("--active"),i?(document.documentElement.style.setProperty("--background","#fff"),document.documentElement.style.setProperty("--color","#000"),t.querySelectorAll(".line__inner").forEach(l=>l.removeAttribute("style")),t.querySelectorAll(".page__grid").forEach(l=>l.removeAttribute("style")),t.classList.remove("--active"),t.offsetHeight,setTimeout(()=>{t.classList.add("--active"),b=e,setTimeout(()=>{x=!1},600)},o?150:50)):setTimeout(()=>{document.documentElement.style.setProperty("--background","#000"),document.documentElement.style.setProperty("--color","#fff"),t.classList.add("--active"),b=e,x=!1},400)}let F=!1;function Ce(){F=!0,document.getElementById("mobileMenu").classList.add("--open"),document.getElementById("menuToggle").textContent="Close"}function Z(){F=!1,document.getElementById("mobileMenu").classList.remove("--open"),document.getElementById("menuToggle").textContent="Menu"}document.getElementById("menuToggle").addEventListener("click",e=>{e.preventDefault(),F?Z():Ce()});document.querySelectorAll("[data-nav]").forEach(e=>{e.addEventListener("click",a=>{a.preventDefault(),Se(e.dataset.nav)})});document.querySelectorAll(".contact-tab").forEach(e=>{e.addEventListener("click",()=>{const a=e.dataset.tab;document.querySelectorAll(".contact-tab").forEach(i=>i.classList.remove("--active")),e.classList.add("--active"),document.querySelectorAll(".contact-form-wrap").forEach(i=>i.classList.remove("--active"));const t=document.querySelector(`.contact-form-wrap[data-form="${a}"]`);t&&t.classList.add("--active")})});const Ve="https://formsubmit.co/ajax/dontaelopez@protonmail.com";document.querySelectorAll(".contact-form").forEach(e=>{e.addEventListener("submit",a=>{a.preventDefault();const t=e.querySelector(".form-submit"),i=t.textContent;t.textContent="Sending...",t.disabled=!0;const o=e.dataset.formType,l=new FormData(e);l.append("_subject",`[dontaelopez.com] ${o} inquiry`),l.append("_template","table"),l.append("_captcha","false"),l.append("Form Type",o),fetch(Ve,{method:"POST",headers:{Accept:"application/json"},body:l}).then(g=>g.json()).then(()=>{t.textContent="Sent",t.classList.add("--sent"),e.reset(),setTimeout(()=>{t.textContent=i,t.classList.remove("--sent"),t.disabled=!1},3e3)}).catch(()=>{t.textContent="Error — try again",t.disabled=!1,setTimeout(()=>{t.textContent=i},3e3)})})});function R(e,a,t){return new _e(e,a,{minFilter:t||M,magFilter:t||M,format:Le,type:Te,depthBuffer:!1,stencilBuffer:!1})}function C(e,a,t){return{read:R(e,a,t),write:R(e,a,t),swap(){const i=this.read;this.read=this.write,this.write=i}}}const ee=`
   varying vec2 vUv;
   void main() {
     vUv = uv;
     gl_Position = vec4(position, 1.0);
   }
-`;
-
-const fluidVert = `
+`,ze=`
   varying vec2 vUv;
   varying vec2 vL;
   varying vec2 vR;
@@ -445,138 +255,10 @@ const fluidVert = `
     vB = vUv - vec2(0.0, texelSize.y);
     gl_Position = vec4(position, 1.0);
   }
-`;
-
-const fsQuadGeom = new PlaneGeometry(2, 2);
-const blitCam = new Camera();
-blitCam.position.z = 1;
-
-function blit(renderer, material, target) {
-  const mesh = new Mesh(fsQuadGeom, material);
-  const scene = new Scene();
-  scene.add(mesh);
-  renderer.setRenderTarget(target || null);
-  renderer.render(scene, blitCam);
-  renderer.setRenderTarget(null);
-}
-
-function makeMat(frag, uniforms, vert) {
-  return new ShaderMaterial({
-    vertexShader: vert || fluidVert,
-    fragmentShader: frag,
-    uniforms: Object.assign({ texelSize: { value: new Vector2() } }, uniforms),
-    depthTest: false,
-    depthWrite: false,
-  });
-}
-
-
-// ═══════════════════════════════════════════════
-//  D LOGO TEXTURE — distinctive pixel-block D
-// ═══════════════════════════════════════════════
-
-function createLogoTexture() {
-  const size = 512;
-  const c = document.createElement('canvas');
-  c.width = size;
-  c.height = size;
-  const ctx = c.getContext('2d');
-
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, size, size);
-
-  // Same proportions as Yuga Y: chunky blocks, tight gaps
-  const bs = Math.floor(size * 0.078);
-  const gap = Math.floor(bs * 0.13);
-  const stride = bs + gap;
-  const r = bs * 0.28;
-
-  // Bold D — 7 rows x 6 cols, 21 blocks
-  // Thick top/bottom bars (4 wide), chunky shoulder transitions,
-  // wide belly reaching col 5. Distinctive, heavy, architectural.
-  //
-  //   ██ ██ ██ ██ ░░ ░░     top bar
-  //   ██ ██ ░░ ░░ ██ ░░     thick left + shoulder
-  //   ██ ░░ ░░ ░░ ░░ ██     belly
-  //   ██ ░░ ░░ ░░ ░░ ██     belly
-  //   ██ ░░ ░░ ░░ ░░ ██     belly
-  //   ██ ██ ░░ ░░ ██ ░░     thick left + shoulder
-  //   ██ ██ ██ ██ ░░ ░░     bottom bar
-  //
-  const blocks = [
-    [0,0],[0,1],[0,2],[0,3],
-    [1,0],[1,1],            [1,4],
-    [2,0],                        [2,5],
-    [3,0],                        [3,5],
-    [4,0],                        [4,5],
-    [5,0],[5,1],            [5,4],
-    [6,0],[6,1],[6,2],[6,3],
-  ];
-
-  const totalCols = 6;
-  const totalRows = 7;
-  const tw = totalCols * stride - gap;
-  const th = totalRows * stride - gap;
-  const ox = (size - tw) / 2;
-  const oy = (size - th) / 2;
-
-  ctx.fillStyle = '#ff0000';
-  blocks.forEach(([row, col]) => {
-    const x = ox + col * stride;
-    const y = oy + row * stride;
-    ctx.beginPath();
-    ctx.roundRect(x, y, bs, bs, r);
-    ctx.fill();
-  });
-
-  // Two-pass blur for smooth SDF (matches Yuga logo.png)
-  const tmp = document.createElement('canvas');
-  tmp.width = size; tmp.height = size;
-  const tctx = tmp.getContext('2d');
-
-  tctx.filter = 'blur(10px)';
-  tctx.drawImage(c, 0, 0);
-
-  ctx.clearRect(0, 0, size, size);
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, size, size);
-  ctx.filter = 'blur(5px)';
-  ctx.drawImage(tmp, 0, 0);
-
-  const tex = new CanvasTexture(c);
-  tex.needsUpdate = true;
-  return tex;
-}
-
-
-// ═══════════════════════════════════════════════
-//  FLUID SIMULATION
-// ═══════════════════════════════════════════════
-
-const SIM_W = 128, SIM_H = 128;
-const DYE_W = 512, DYE_H = 512;
-
-let velocity, pressure, divergence, curl, dye, uvField;
-
-function initFluid(renderer) {
-  velocity = createDoubleFBO(SIM_W, SIM_H);
-  pressure = createDoubleFBO(SIM_W, SIM_H);
-  divergence = createFBO(SIM_W, SIM_H, NearestFilter);
-  curl = createFBO(SIM_W, SIM_H, NearestFilter);
-  dye = createDoubleFBO(DYE_W, DYE_H);
-  uvField = createDoubleFBO(DYE_W, DYE_H);
-
-  // Init UV field to identity
-  const uvInitMat = makeMat(`
+`,Me=new $(2,2),te=new j;te.position.z=1;function s(e,a,t){const i=new J(Me,a),o=new K;o.add(i),e.setRenderTarget(t||null),e.render(o,te),e.setRenderTarget(null)}function p(e,a,t){return new X({vertexShader:t||ze,fragmentShader:e,uniforms:Object.assign({texelSize:{value:new f}},a),depthTest:!1,depthWrite:!1})}function Re(){const a=document.createElement("canvas");a.width=512,a.height=512;const t=a.getContext("2d");t.fillStyle="#000",t.fillRect(0,0,512,512);const i=Math.floor(512*.078),o=Math.floor(i*.13),l=i+o,g=i*.28,re=[[0,0],[0,1],[0,2],[0,3],[1,0],[1,1],[1,4],[2,0],[2,5],[3,0],[3,5],[4,0],[4,5],[5,0],[5,1],[5,4],[6,0],[6,1],[6,2],[6,3]],se=6,ue=7,ce=se*l-o,ve=ue*l-o,de=(512-ce)/2,pe=(512-ve)/2;t.fillStyle="#ff0000",re.forEach(([fe,me])=>{const ge=de+me*l,he=pe+fe*l;t.beginPath(),t.roundRect(ge,he,i,i,g),t.fill()});const S=document.createElement("canvas");S.width=512,S.height=512;const H=S.getContext("2d");H.filter="blur(10px)",H.drawImage(a,0,0),t.clearRect(0,0,512,512),t.fillStyle="#000",t.fillRect(0,0,512,512),t.filter="blur(5px)",t.drawImage(S,0,0);const A=new we(a);return A.needsUpdate=!0,A}const T=128,L=128,N=512,E=512;let n,D,P,I,m,y;function Ue(e){n=C(T,L),D=C(T,L),P=R(T,L,W),I=R(T,L,W),m=C(N,E),y=C(N,E);const a=p(`
     varying vec2 vUv;
     void main() { gl_FragColor = vec4(vUv, 0.0, 0.0); }
-  `, {}, fsTriVert);
-  blit(renderer, uvInitMat, uvField.read);
-  blit(renderer, uvInitMat, uvField.write);
-}
-
-// Splat material
-const splatMat = makeMat(`
+  `,{},ee);s(e,a,y.read),s(e,a,y.write)}const r=p(`
   uniform sampler2D uTarget;
   uniform float aspectRatio;
   uniform vec3 color;
@@ -599,15 +281,7 @@ const splatMat = makeMat(`
     if (isDye) result = clamp(result, vec3(0.0), vec3(1.0));
     gl_FragColor = vec4(result, 1.0);
   }
-`, {
-  uTarget: { value: null }, aspectRatio: { value: 1.0 },
-  color: { value: new Vector3() },
-  point: { value: new Vector2() }, prevPoint: { value: new Vector2() },
-  radius: { value: 0.0 }, isDye: { value: false },
-});
-
-// Curl
-const curlMat = makeMat(`
+`,{uTarget:{value:null},aspectRatio:{value:1},color:{value:new Q},point:{value:new f},prevPoint:{value:new f},radius:{value:0},isDye:{value:!1}}),U=p(`
   uniform sampler2D uVelocity;
   varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
   void main() {
@@ -617,10 +291,7 @@ const curlMat = makeMat(`
     float B = texture2D(uVelocity, vB).x;
     gl_FragColor = vec4(0.5 * (R - L - T + B), 0.0, 0.0, 1.0);
   }
-`, { uVelocity: { value: null } });
-
-// Vorticity
-const vorticityMat = makeMat(`
+`,{uVelocity:{value:null}}),w=p(`
   uniform sampler2D uVelocity;
   uniform sampler2D uCurl;
   uniform float curlAmount;
@@ -639,10 +310,7 @@ const vorticityMat = makeMat(`
     vec2 vel = texture2D(uVelocity, vUv).xy;
     gl_FragColor = vec4(vel + force * dt, 0.0, 1.0);
   }
-`, { uVelocity: { value: null }, uCurl: { value: null }, curlAmount: { value: 0.001 }, dt: { value: 0.016 } });
-
-// Divergence
-const divMat = makeMat(`
+`,{uVelocity:{value:null},uCurl:{value:null},curlAmount:{value:.001},dt:{value:.016}}),B=p(`
   uniform sampler2D uVelocity;
   varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
   void main() {
@@ -652,10 +320,7 @@ const divMat = makeMat(`
     float B = texture2D(uVelocity, vB).y;
     gl_FragColor = vec4(0.5 * (R - L + T - B), 0.0, 0.0, 1.0);
   }
-`, { uVelocity: { value: null } });
-
-// Pressure
-const pressureMat = makeMat(`
+`,{uVelocity:{value:null}}),V=p(`
   uniform sampler2D uPressure;
   uniform sampler2D uDivergence;
   varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
@@ -667,10 +332,7 @@ const pressureMat = makeMat(`
     float div = texture2D(uDivergence, vUv).x;
     gl_FragColor = vec4((L + R + B + T - div) * 0.25, 0.0, 0.0, 1.0);
   }
-`, { uPressure: { value: null }, uDivergence: { value: null } });
-
-// Gradient subtract
-const gradSubMat = makeMat(`
+`,{uPressure:{value:null},uDivergence:{value:null}}),z=p(`
   uniform sampler2D uPressure;
   uniform sampler2D uVelocity;
   varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
@@ -682,10 +344,7 @@ const gradSubMat = makeMat(`
     vec2 vel = texture2D(uVelocity, vUv).xy - vec2(R - L, T - B);
     gl_FragColor = vec4(vel, 0.0, 1.0);
   }
-`, { uPressure: { value: null }, uVelocity: { value: null } });
-
-// Advection
-const advectMat = makeMat(`
+`,{uPressure:{value:null},uVelocity:{value:null}}),v=p(`
   uniform sampler2D uVelocity;
   uniform sampler2D uSource;
   uniform vec2 texelSize;
@@ -697,10 +356,7 @@ const advectMat = makeMat(`
     gl_FragColor = texture2D(uSource, coord) * dissipation;
     gl_FragColor.a = 1.0;
   }
-`, { uVelocity: { value: null }, uSource: { value: null }, dt: { value: 0.016 }, dissipation: { value: 1.0 } });
-
-// UV tracking
-const uvMat = makeMat(`
+`,{uVelocity:{value:null},uSource:{value:null},dt:{value:.016},dissipation:{value:1}}),_=p(`
   uniform float dtRatio;
   uniform sampler2D tDiffuse;
   uniform sampler2D tVel;
@@ -719,102 +375,7 @@ const uvMat = makeMat(`
     prevUV += prevVel * dtRatio;
     gl_FragColor = vec4(prevUV, prevVel);
   }
-`, { dtRatio: { value: 1.0 }, tDiffuse: { value: null }, tVel: { value: null } });
-
-const simTexel = new Vector2(1 / SIM_W, 1 / SIM_H);
-const dyeTexel = new Vector2(1 / DYE_W, 1 / DYE_H);
-
-function splatFluid(renderer, x, y, dx, dy) {
-  const aspect = window.innerWidth / window.innerHeight;
-
-  // Velocity splat
-  splatMat.uniforms.texelSize.value = simTexel;
-  splatMat.uniforms.uTarget.value = velocity.read.texture;
-  splatMat.uniforms.aspectRatio.value = aspect;
-  splatMat.uniforms.point.value.set(x, y);
-  splatMat.uniforms.prevPoint.value.set(x - dx, y - dy);
-  splatMat.uniforms.color.value.set(dx * 500, dy * 500, 0);
-  splatMat.uniforms.radius.value = 0.25;
-  splatMat.uniforms.isDye.value = false;
-  blit(renderer, splatMat, velocity.write);
-  velocity.swap();
-
-  // Dye splat — same wide radius
-  splatMat.uniforms.uTarget.value = dye.read.texture;
-  splatMat.uniforms.color.value.set(0.8, 0.8, 0.8);
-  splatMat.uniforms.radius.value = 0.25;
-  splatMat.uniforms.isDye.value = true;
-  blit(renderer, splatMat, dye.write);
-  dye.swap();
-}
-
-function stepFluid(renderer, dt) {
-  // Curl
-  curlMat.uniforms.texelSize.value = simTexel;
-  curlMat.uniforms.uVelocity.value = velocity.read.texture;
-  blit(renderer, curlMat, curl);
-
-  // Vorticity confinement
-  vorticityMat.uniforms.texelSize.value = simTexel;
-  vorticityMat.uniforms.uVelocity.value = velocity.read.texture;
-  vorticityMat.uniforms.uCurl.value = curl.texture;
-  vorticityMat.uniforms.dt.value = dt;
-  blit(renderer, vorticityMat, velocity.write);
-  velocity.swap();
-
-  // Divergence
-  divMat.uniforms.texelSize.value = simTexel;
-  divMat.uniforms.uVelocity.value = velocity.read.texture;
-  blit(renderer, divMat, divergence);
-
-  // Pressure solve (Jacobi iterations)
-  for (let i = 0; i < 2; i++) {
-    pressureMat.uniforms.texelSize.value = simTexel;
-    pressureMat.uniforms.uPressure.value = pressure.read.texture;
-    pressureMat.uniforms.uDivergence.value = divergence.texture;
-    blit(renderer, pressureMat, pressure.write);
-    pressure.swap();
-  }
-
-  // Gradient subtract
-  gradSubMat.uniforms.texelSize.value = simTexel;
-  gradSubMat.uniforms.uPressure.value = pressure.read.texture;
-  gradSubMat.uniforms.uVelocity.value = velocity.read.texture;
-  blit(renderer, gradSubMat, velocity.write);
-  velocity.swap();
-
-  // Advect velocity
-  advectMat.uniforms.texelSize.value = simTexel;
-  advectMat.uniforms.uVelocity.value = velocity.read.texture;
-  advectMat.uniforms.uSource.value = velocity.read.texture;
-  advectMat.uniforms.dt.value = dt;
-  advectMat.uniforms.dissipation.value = 0.97;
-  blit(renderer, advectMat, velocity.write);
-  velocity.swap();
-
-  // Advect dye
-  advectMat.uniforms.texelSize.value = dyeTexel;
-  advectMat.uniforms.uVelocity.value = velocity.read.texture;
-  advectMat.uniforms.uSource.value = dye.read.texture;
-  advectMat.uniforms.dissipation.value = 0.93;
-  blit(renderer, advectMat, dye.write);
-  dye.swap();
-
-  // UV field
-  uvMat.uniforms.texelSize.value = dyeTexel;
-  uvMat.uniforms.tDiffuse.value = uvField.read.texture;
-  uvMat.uniforms.tVel.value = velocity.read.texture;
-  uvMat.uniforms.dtRatio.value = dt * 60;
-  blit(renderer, uvMat, uvField.write);
-  uvField.swap();
-}
-
-
-// ═══════════════════════════════════════════════
-//  MAIN COMPOSITE SHADER (from Yuga source)
-// ═══════════════════════════════════════════════
-
-const compositeShader = `
+`,{dtRatio:{value:1},tDiffuse:{value:null},tVel:{value:null}}),h=new f(1/T,1/L),G=new f(1/N,1/E);function ae(e,a,t,i,o){const l=window.innerWidth/window.innerHeight;r.uniforms.texelSize.value=h,r.uniforms.uTarget.value=n.read.texture,r.uniforms.aspectRatio.value=l,r.uniforms.point.value.set(a,t),r.uniforms.prevPoint.value.set(a-i,t-o),r.uniforms.color.value.set(i*500,o*500,0),r.uniforms.radius.value=.25,r.uniforms.isDye.value=!1,s(e,r,n.write),n.swap(),r.uniforms.uTarget.value=m.read.texture,r.uniforms.color.value.set(.8,.8,.8),r.uniforms.radius.value=.25,r.uniforms.isDye.value=!0,s(e,r,m.write),m.swap()}function Be(e,a){U.uniforms.texelSize.value=h,U.uniforms.uVelocity.value=n.read.texture,s(e,U,I),w.uniforms.texelSize.value=h,w.uniforms.uVelocity.value=n.read.texture,w.uniforms.uCurl.value=I.texture,w.uniforms.dt.value=a,s(e,w,n.write),n.swap(),B.uniforms.texelSize.value=h,B.uniforms.uVelocity.value=n.read.texture,s(e,B,P);for(let t=0;t<2;t++)V.uniforms.texelSize.value=h,V.uniforms.uPressure.value=D.read.texture,V.uniforms.uDivergence.value=P.texture,s(e,V,D.write),D.swap();z.uniforms.texelSize.value=h,z.uniforms.uPressure.value=D.read.texture,z.uniforms.uVelocity.value=n.read.texture,s(e,z,n.write),n.swap(),v.uniforms.texelSize.value=h,v.uniforms.uVelocity.value=n.read.texture,v.uniforms.uSource.value=n.read.texture,v.uniforms.dt.value=a,v.uniforms.dissipation.value=.97,s(e,v,n.write),n.swap(),v.uniforms.texelSize.value=G,v.uniforms.uVelocity.value=n.read.texture,v.uniforms.uSource.value=m.read.texture,v.uniforms.dissipation.value=.93,s(e,v,m.write),m.swap(),_.uniforms.texelSize.value=G,_.uniforms.tDiffuse.value=y.read.texture,_.uniforms.tVel.value=n.read.texture,_.uniforms.dtRatio.value=a*60,s(e,_,y.write),y.swap()}const Oe=`
   uniform vec3 uColorBg;
   uniform vec2 resolution;
   uniform float uLogoAnimation;
@@ -991,164 +552,4 @@ const compositeShader = `
     gl_FragColor.rgb = bg;
     gl_FragColor.a = 1.0;
   }
-`;
-
-
-// ═══════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════
-
-const container = document.getElementById('webgl');
-const renderer = new WebGLRenderer({ antialias: false, alpha: false });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.autoClear = false;
-container.appendChild(renderer.domElement);
-
-const scene = new Scene();
-const camera = new Camera();
-camera.position.z = 1;
-
-// Load textures
-const loader = new TextureLoader();
-const bgTexture = loader.load('/images/bg4.png', (tex) => {
-  tex.wrapS = RepeatWrapping;
-  tex.wrapT = RepeatWrapping;
-  tex.minFilter = LinearFilter;
-  tex.magFilter = LinearFilter;
-});
-
-const logoTexture = createLogoTexture();
-
-// Init fluid
-initFluid(renderer);
-
-// Pick random noise
-const noiseType = [0, 1, 2, 3][Math.floor(Math.random() * 4)];
-
-// Composite material
-const mainMat = new ShaderMaterial({
-  extensions: { derivatives: true },
-  vertexShader: fsTriVert,
-  fragmentShader: compositeShader,
-  uniforms: {
-    tBg: { value: bgTexture },
-    tLogo: { value: logoTexture },
-    uColorBg: { value: new Color('#000000') },
-    uColorLogo: { value: new Color('#ffffff') },
-    uNoise: { value: noiseType },
-    uDye: { value: null },
-    uVel: { value: null },
-    uUV: { value: null },
-    uNoise1Opts: { value: new Vector2(1.25, 0.25) },
-    uNoise2Opts: { value: new Vector2(2.0, 0.8) },
-    uNoise3Opts: { value: new Vector3(5.0, 2.0, 3.8) },
-    uNoise4Opts: { value: new Vector4(-3.8, -2.0, -3.9, -2.5) },
-    uGlobalShape: { value: 0.0 },
-    uGlobalOpen: { value: 0.0 },
-    uNoiseMultiplier: { value: 0.0 },
-    uLogoAnimation: { value: 0.0 },
-    resolution: { value: new Vector2(window.innerWidth, window.innerHeight) },
-    time: { value: 0 },
-  },
-  depthTest: false, depthWrite: false, transparent: false,
-});
-
-scene.add(new Mesh(new PlaneGeometry(2, 2), mainMat));
-
-
-// ═══════════════════════════════════════════════
-//  MOUSE
-// ═══════════════════════════════════════════════
-
-let lastMouse = { x: 0, y: 0, hasMoved: false };
-
-window.addEventListener('mousemove', (e) => {
-  const nx = e.clientX / window.innerWidth;
-  const ny = 1.0 - e.clientY / window.innerHeight;
-  if (lastMouse.hasMoved) {
-    const dx = nx - lastMouse.x;
-    const dy = ny - lastMouse.y;
-    if (Math.abs(dx) > 0 || Math.abs(dy) > 0) {
-      splatFluid(renderer, nx, ny, dx, dy);
-    }
-  }
-  lastMouse.x = nx;
-  lastMouse.y = ny;
-  lastMouse.hasMoved = true;
-});
-
-window.addEventListener('touchmove', (e) => {
-  if (e.touches.length) {
-    const t = e.touches[0];
-    const nx = t.clientX / window.innerWidth;
-    const ny = 1.0 - t.clientY / window.innerHeight;
-    if (lastMouse.hasMoved) {
-      const dx = nx - lastMouse.x;
-      const dy = ny - lastMouse.y;
-      splatFluid(renderer, nx, ny, dx, dy);
-    }
-    lastMouse.x = nx;
-    lastMouse.y = ny;
-    lastMouse.hasMoved = true;
-  }
-}, { passive: true });
-
-window.addEventListener('resize', () => {
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  mainMat.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
-});
-
-
-// ═══════════════════════════════════════════════
-//  ANIMATION LOOP
-// ═══════════════════════════════════════════════
-
-function easeOutQuint(t) { return 1 - Math.pow(1 - t, 5); }
-
-const startTime = performance.now();
-let prevTime = startTime;
-
-// Entrance: WebGL zooms in, header slides up
-setTimeout(() => {
-  document.getElementById('webgl').classList.add('--visible');
-}, 100);
-setTimeout(() => {
-  document.getElementById('header').classList.add('--visible');
-}, 1250);
-
-function animate() {
-  requestAnimationFrame(animate);
-
-  const now = performance.now();
-  const elapsed = (now - startTime) / 1000;
-  const dt = Math.min((now - prevTime) / 1000, 0.033);
-  prevTime = now;
-
-  // Entrance animations — matches Yuga GSAP timeline:
-  // Logo: starts at 0s, 1.5s duration, ease "io"
-  // Shape + noise: start at 0.75s, 1.75s duration, ease power2.inOut
-  const logoT = easeOutQuint(Math.min(1, Math.max(0, elapsed / 1.5)));
-  const shapeT = easeOutQuint(Math.min(1, Math.max(0, (elapsed - 0.75) / 1.75)));
-  const noiseT = easeOutQuint(Math.min(1, Math.max(0, (elapsed - 0.75) / 1.75)));
-
-  mainMat.uniforms.uGlobalShape.value = shapeT;
-  mainMat.uniforms.uNoiseMultiplier.value = noiseT;
-  mainMat.uniforms.uLogoAnimation.value = logoT;
-  mainMat.uniforms.time.value = elapsed;
-
-  // Step fluid simulation
-  stepFluid(renderer, dt);
-
-  // Update composite textures
-  mainMat.uniforms.uDye.value = dye.read.texture;
-  mainMat.uniforms.uVel.value = velocity.read.texture;
-  mainMat.uniforms.uUV.value = uvField.read.texture;
-
-  // Render final composite
-  renderer.setRenderTarget(null);
-  renderer.render(scene, camera);
-}
-
-animate();
+`,Ne=document.getElementById("webgl"),c=new ye({antialias:!1,alpha:!1});c.setPixelRatio(Math.min(window.devicePixelRatio,2));c.setSize(window.innerWidth,window.innerHeight);c.autoClear=!1;Ne.appendChild(c.domElement);const oe=new K,ie=new j;ie.position.z=1;const Ee=new be,Pe=Ee.load("/images/bg4.png",e=>{e.wrapS=k,e.wrapT=k,e.minFilter=M,e.magFilter=M}),Ie=Re();Ue(c);const Fe=[0,1,2,3][Math.floor(Math.random()*4)],d=new X({extensions:{derivatives:!0},vertexShader:ee,fragmentShader:Oe,uniforms:{tBg:{value:Pe},tLogo:{value:Ie},uColorBg:{value:new q("#000000")},uColorLogo:{value:new q("#ffffff")},uNoise:{value:Fe},uDye:{value:null},uVel:{value:null},uUV:{value:null},uNoise1Opts:{value:new f(1.25,.25)},uNoise2Opts:{value:new f(2,.8)},uNoise3Opts:{value:new Q(5,2,3.8)},uNoise4Opts:{value:new xe(-3.8,-2,-3.9,-2.5)},uGlobalShape:{value:0},uGlobalOpen:{value:0},uNoiseMultiplier:{value:0},uLogoAnimation:{value:0},resolution:{value:new f(window.innerWidth,window.innerHeight)},time:{value:0}},depthTest:!1,depthWrite:!1,transparent:!1});oe.add(new J(new $(2,2),d));let u={x:0,y:0,hasMoved:!1};window.addEventListener("mousemove",e=>{const a=e.clientX/window.innerWidth,t=1-e.clientY/window.innerHeight;if(u.hasMoved){const i=a-u.x,o=t-u.y;(Math.abs(i)>0||Math.abs(o)>0)&&ae(c,a,t,i,o)}u.x=a,u.y=t,u.hasMoved=!0});window.addEventListener("touchmove",e=>{if(e.touches.length){const a=e.touches[0],t=a.clientX/window.innerWidth,i=1-a.clientY/window.innerHeight;if(u.hasMoved){const o=t-u.x,l=i-u.y;ae(c,t,i,o,l)}u.x=t,u.y=i,u.hasMoved=!0}},{passive:!0});window.addEventListener("resize",()=>{c.setSize(window.innerWidth,window.innerHeight),c.setPixelRatio(Math.min(window.devicePixelRatio,2)),d.uniforms.resolution.value.set(window.innerWidth,window.innerHeight)});function O(e){return 1-Math.pow(1-e,5)}const le=performance.now();let Y=le;setTimeout(()=>{document.getElementById("webgl").classList.add("--visible")},100);setTimeout(()=>{document.getElementById("header").classList.add("--visible")},1250);function ne(){requestAnimationFrame(ne);const e=performance.now(),a=(e-le)/1e3,t=Math.min((e-Y)/1e3,.033);Y=e;const i=O(Math.min(1,Math.max(0,a/1.5))),o=O(Math.min(1,Math.max(0,(a-.75)/1.75))),l=O(Math.min(1,Math.max(0,(a-.75)/1.75)));d.uniforms.uGlobalShape.value=o,d.uniforms.uNoiseMultiplier.value=l,d.uniforms.uLogoAnimation.value=i,d.uniforms.time.value=a,Be(c,t),d.uniforms.uDye.value=m.read.texture,d.uniforms.uVel.value=n.read.texture,d.uniforms.uUV.value=y.read.texture,c.setRenderTarget(null),c.render(oe,ie)}ne();
