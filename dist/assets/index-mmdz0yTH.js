@@ -4019,7 +4019,6 @@ void main() {
       <ul class="header__nav header__nav--right nav-mobile">
         <li><a href="javascript:void(0)" id="menuToggle">Menu</a></li>
       </ul>
-      <div class="header__ind"></div>
     </div>
   </header>
 
