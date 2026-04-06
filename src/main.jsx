@@ -346,21 +346,45 @@ document.querySelectorAll('.contact-tab').forEach(tab => {
   });
 });
 
-// Form submission
+// Form submission via Formsubmit.co
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/dontaelopez@protonmail.com';
+
 document.querySelectorAll('.contact-form').forEach(form => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = form.querySelector('.form-submit');
     const originalText = btn.textContent;
-    btn.textContent = 'Sent';
-    btn.classList.add('--sent');
+    btn.textContent = 'Sending...';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.classList.remove('--sent');
-      btn.disabled = false;
+
+    const formType = form.dataset.formType;
+    const data = new FormData(form);
+    data.append('_subject', `[dontaelopez.com] ${formType} inquiry`);
+    data.append('_template', 'table');
+    data.append('_captcha', 'false');
+    data.append('Form Type', formType);
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data,
+    })
+    .then(res => res.json())
+    .then(() => {
+      btn.textContent = 'Sent';
+      btn.classList.add('--sent');
       form.reset();
-    }, 3000);
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.classList.remove('--sent');
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(() => {
+      btn.textContent = 'Error — try again';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = originalText; }, 3000);
+    });
   });
 });
 
