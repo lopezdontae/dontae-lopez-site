@@ -1,4 +1,4 @@
-import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,c as Q,d as q,M as J,e as we,f as _e,H as Te,g as Le,N as W}from"./three-BUAgunp6.js";(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))i(o);new MutationObserver(o=>{for(const l of o)if(l.type==="childList")for(const g of l.addedNodes)g.tagName==="LINK"&&g.rel==="modulepreload"&&i(g)}).observe(document,{childList:!0,subtree:!0});function t(o){const l={};return o.integrity&&(l.integrity=o.integrity),o.referrerPolicy&&(l.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?l.credentials="include":o.crossOrigin==="anonymous"?l.credentials="omit":l.credentials="same-origin",l}function i(o){if(o.ep)return;o.ep=!0;const l=t(o);fetch(o.href,l)}})();const De=document.getElementById("root");De.innerHTML=`
+import{_ as e,a as t,c as n,d as r,f as i,g as a,h as o,i as ee,l as te,m as s,n as ne,o as c,p as re,r as l,s as u,t as d,u as f,v as ie}from"./three-biUxlLo3.js";(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var ae=document.getElementById(`root`);ae.innerHTML=`
   <div class="webgl" id="webgl"></div>
 
   <!-- Page layer: sits over WebGL, holds page content -->
@@ -17,17 +17,27 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
         <section class="page__content">
           <div class="page__grid">
             <div class="page__col page__col--label">
-              <p class="page__label">Who</p>
+              <h2 class="page__label">Who</h2>
             </div>
             <div class="page__col page__col--text">
-              <p class="page__paragraph">Dontae Lopez is an entrepreneur, researcher, and athlete.</p>
-              <p class="page__paragraph">He is the CEO of <a href="https://threeum.com" target="_blank" rel="noopener noreferrer" class="page__link" style="font-weight:600">Threeum</a>. He is the Creative Director of Muerte Studio. He is a prospect athlete under Mission Twelve and a part of the Ground Zero series.</p>
-              <p class="page__paragraph">He is originally from Colorado, born in Colorado Springs.</p>
+              <p class="page__paragraph">Dontae Lopez is an entrepreneur, researcher, and athlete. He is the founder and CEO of <a href="https://threeum.com" target="_blank" rel="noopener noreferrer" class="page__link" style="font-weight:600">Threeum</a> and the creator of Cyte and Cella. He is also the Creative Director of Muerte Studio, a prospect athlete under Mission Twelve, and part of the Ground Zero series.</p>
+              <p class="page__paragraph">He is originally from Colorado and was born in Colorado Springs.</p>
             </div>
           </div>
           <div class="page__grid">
             <div class="page__col page__col--label">
-              <p class="page__label">Focus</p>
+              <h2 class="page__label">Background</h2>
+            </div>
+            <div class="page__col page__col--text">
+              <p class="page__paragraph">Lopez began his career in equity research and operations. His work later expanded into venture investing, company building, and operating roles across emerging technology. That progression brought together finance, research, and systems thinking, first through evaluating companies and technologies, and later through building new ones.</p>
+              <p class="page__paragraph">Over the past several years, his research has focused increasingly on artificial intelligence, quantum information, computing infrastructure, and the design of systems that operate under uncertainty. His project-based evaluation work included outputs from systems developed by OpenAI, Anthropic, NVIDIA, Meta, ElevenLabs, and Lovable. The work has included model training and evaluation, quality assurance, human-preference research, knowledge-base and infrastructure research, adversarial red teaming, data work, code-generation projects, and testing new model capabilities.</p>
+              <p class="page__paragraph">To supplement his professional work, Lopez pursued a self-directed course of study across artificial intelligence, finance, information systems, cybersecurity, quantum information, infrastructure, and organizational design. It included university coursework, executive education, online courses, and professional certifications selected according to the problems he was working to understand. Rather than following a single institutional track, he assembled the technical, financial, and organizational knowledge needed to pursue the systems he envisioned.</p>
+              <p class="page__paragraph">That work now converges at Threeum, where he is building across software, infrastructure, biological computing, and dynamical hardware.</p>
+            </div>
+          </div>
+          <div class="page__grid">
+            <div class="page__col page__col--label">
+              <h2 class="page__label">Focus</h2>
             </div>
             <div class="page__col page__col--text">
               <p class="page__paragraph">He is drawn to the hardest version of everything. The research that has no clear answer yet. The business that has no playbook. The sport that demands everything and negotiates nothing. The challenge is not a byproduct of the work. It is the point.</p>
@@ -35,12 +45,13 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
           </div>
           <div class="page__grid">
             <div class="page__col page__col--label">
-              <p class="page__label">Philosophy</p>
+              <h2 class="page__label">Philosophy</h2>
             </div>
             <div class="page__col page__col--text">
               <p class="page__paragraph">He believes the work speaks for itself if you let it. That means taking the time to get it right, resisting the pressure to move fast when the situation calls for patience, and holding the same standard whether anyone is watching or not. The domain does not matter. The discipline does.</p>
             </div>
           </div>
+          <p class="page__disclaimer">Some artificial intelligence work described on this page was completed on a project basis as an independent contractor. Company names identify the developers of systems evaluated or projects supported. No employment, partnership, sponsorship, or endorsement is implied.</p>
         </section>
       </div>
     </div>
@@ -221,7 +232,7 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
         <li><a href="/contact" data-nav="contact">Contact</a></li>
       </ul>
       <ul class="header__nav header__nav--right nav-mobile">
-        <li><a href="javascript:void(0)" id="menuToggle">Menu</a></li>
+        <li><button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button></li>
       </ul>
     </div>
   </header>
@@ -234,13 +245,13 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
       <a href="/contact" data-nav="contact" class="mobile-menu__link">Contact</a>
     </nav>
   </div>
-`;let b="home",x=!1;function Se(e){if(e===b||x)return;x=!0,Z();const a=document.querySelector(`.page[data-page="${b}"]`),t=document.querySelector(`.page[data-page="${e}"]`);if(!t){x=!1;return}const i=e!=="home",o=b!=="home";a.classList.remove("--active"),i?(document.documentElement.style.setProperty("--background","#fff"),document.documentElement.style.setProperty("--color","#000"),t.querySelectorAll(".line__inner").forEach(l=>l.removeAttribute("style")),t.querySelectorAll(".page__grid").forEach(l=>l.removeAttribute("style")),t.classList.remove("--active"),t.offsetHeight,setTimeout(()=>{t.classList.add("--active"),b=e,setTimeout(()=>{x=!1},600)},o?150:50)):setTimeout(()=>{document.documentElement.style.setProperty("--background","#000"),document.documentElement.style.setProperty("--color","#fff"),t.classList.add("--active"),b=e,x=!1},400)}let F=!1;function Ce(){F=!0,document.getElementById("mobileMenu").classList.add("--open"),document.getElementById("menuToggle").textContent="Close"}function Z(){F=!1,document.getElementById("mobileMenu").classList.remove("--open"),document.getElementById("menuToggle").textContent="Menu"}document.getElementById("menuToggle").addEventListener("click",e=>{e.preventDefault(),F?Z():Ce()});document.querySelectorAll("[data-nav]").forEach(e=>{e.addEventListener("click",a=>{a.preventDefault(),Se(e.dataset.nav)})});document.querySelectorAll(".contact-tab").forEach(e=>{e.addEventListener("click",()=>{const a=e.dataset.tab;document.querySelectorAll(".contact-tab").forEach(i=>i.classList.remove("--active")),e.classList.add("--active"),document.querySelectorAll(".contact-form-wrap").forEach(i=>i.classList.remove("--active"));const t=document.querySelector(`.contact-form-wrap[data-form="${a}"]`);t&&t.classList.add("--active")})});const Ve=[100,111,110,116,97,101,108,111,112,101,122,64,112,114,111,116,111,110,109,97,105,108,46,99,111,109],Me="https://formsubmit.co/ajax/"+Ve.map(e=>String.fromCharCode(e)).join("");document.querySelectorAll(".contact-form").forEach(e=>{e.addEventListener("submit",a=>{a.preventDefault();const t=e.querySelector(".form-submit"),i=t.textContent;t.textContent="Sending...",t.disabled=!0;const o=e.dataset.formType,l=new FormData(e);l.append("_subject",`[dontaelopez.com] ${o} inquiry`),l.append("_template","table"),l.append("_captcha","false"),l.append("Form Type",o),fetch(Me,{method:"POST",headers:{Accept:"application/json"},body:l}).then(g=>g.json()).then(()=>{t.textContent="Sent",t.classList.add("--sent"),e.reset(),setTimeout(()=>{t.textContent=i,t.classList.remove("--sent"),t.disabled=!1},3e3)}).catch(()=>{t.textContent="Error — try again",t.disabled=!1,setTimeout(()=>{t.textContent=i},3e3)})})});function R(e,a,t){return new _e(e,a,{minFilter:t||z,magFilter:t||z,format:Le,type:Te,depthBuffer:!1,stencilBuffer:!1})}function C(e,a,t){return{read:R(e,a,t),write:R(e,a,t),swap(){const i=this.read;this.read=this.write,this.write=i}}}const ee=`
+`;var p={home:`/`,about:`/about`,contact:`/contact`};function m(e){let t=e.replace(/\/+$/,``)||`/`;return Object.entries(p).find(([,e])=>e===t)?.[0]||`home`}function h(e){let t=e!==`home`;document.documentElement.style.setProperty(`--background`,t?`#fff`:`#000`),document.documentElement.style.setProperty(`--color`,t?`#000`:`#fff`)}var g=m(window.location.pathname),_=!1;document.querySelectorAll(`.page`).forEach(e=>{e.classList.toggle(`--active`,e.dataset.page===g)}),h(g);function v(e,{updateHistory:t=!0}={}){if(e===g||_)return;_=!0,b();let n=document.querySelector(`.page[data-page="${g}"]`),r=document.querySelector(`.page[data-page="${e}"]`);if(!r){_=!1;return}t&&window.history.pushState({page:e},``,p[e]);let i=e!==`home`,a=g!==`home`;n.classList.remove(`--active`),i?(h(e),r.querySelectorAll(`.line__inner`).forEach(e=>e.removeAttribute(`style`)),r.querySelectorAll(`.page__grid`).forEach(e=>e.removeAttribute(`style`)),r.classList.remove(`--active`),r.offsetHeight,setTimeout(()=>{r.classList.add(`--active`),g=e,setTimeout(()=>{_=!1},600)},a?150:50)):setTimeout(()=>{h(e),r.classList.add(`--active`),g=e,_=!1},400)}var y=!1;function oe(){y=!0,document.getElementById(`mobileMenu`).classList.add(`--open`),document.getElementById(`menuToggle`).textContent=`Close`,document.getElementById(`menuToggle`).setAttribute(`aria-expanded`,`true`)}function b(){y=!1,document.getElementById(`mobileMenu`).classList.remove(`--open`),document.getElementById(`menuToggle`).textContent=`Menu`,document.getElementById(`menuToggle`).setAttribute(`aria-expanded`,`false`)}document.getElementById(`menuToggle`).addEventListener(`click`,e=>{e.preventDefault(),y?b():oe()}),document.querySelectorAll(`[data-nav]`).forEach(e=>{e.addEventListener(`click`,t=>{t.preventDefault(),v(e.dataset.nav)})}),window.addEventListener(`popstate`,()=>{v(m(window.location.pathname),{updateHistory:!1})}),document.querySelectorAll(`.contact-tab`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.tab;document.querySelectorAll(`.contact-tab`).forEach(e=>e.classList.remove(`--active`)),e.classList.add(`--active`),document.querySelectorAll(`.contact-form-wrap`).forEach(e=>e.classList.remove(`--active`));let n=document.querySelector(`.contact-form-wrap[data-form="${t}"]`);n&&n.classList.add(`--active`)})});var se=`https://formsubmit.co/ajax/`+[100,111,110,116,97,101,108,111,112,101,122,64,112,114,111,116,111,110,109,97,105,108,46,99,111,109].map(e=>String.fromCharCode(e)).join(``);document.querySelectorAll(`.contact-form`).forEach(e=>{e.addEventListener(`submit`,t=>{t.preventDefault();let n=e.querySelector(`.form-submit`),r=n.textContent;n.textContent=`Sending...`,n.disabled=!0;let i=e.dataset.formType,a=new FormData(e);a.append(`_subject`,`[dontaelopez.com] ${i} inquiry`),a.append(`_template`,`table`),a.append(`_captcha`,`false`),a.append(`Form Type`,i),fetch(se,{method:`POST`,headers:{Accept:`application/json`},body:a}).then(async e=>{let t=await e.json().catch(()=>null);if(!e.ok||t?.success===!1)throw Error(`Form submission failed`);return t}).then(()=>{n.textContent=`Sent`,n.classList.add(`--sent`),e.reset(),setTimeout(()=>{n.textContent=r,n.classList.remove(`--sent`),n.disabled=!1},3e3)}).catch(()=>{n.textContent=`Error — try again`,n.disabled=!1,setTimeout(()=>{n.textContent=r},3e3)})})});function x(t,n,r){return new e(t,n,{minFilter:r||1006,magFilter:r||1006,format:te,type:ee,depthBuffer:!1,stencilBuffer:!1})}function S(e,t,n){return{read:x(e,t,n),write:x(e,t,n),swap(){let e=this.read;this.read=this.write,this.write=e}}}var C=`
   varying vec2 vUv;
   void main() {
     vUv = uv;
     gl_Position = vec4(position, 1.0);
   }
-`,ze=`
+`,ce=`
   varying vec2 vUv;
   varying vec2 vL;
   varying vec2 vR;
@@ -255,10 +266,10 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     vB = vUv - vec2(0.0, texelSize.y);
     gl_Position = vec4(position, 1.0);
   }
-`,Re=new j(2,2),te=new $;te.position.z=1;function s(e,a,t){const i=new J(Re,a),o=new K;o.add(i),e.setRenderTarget(t||null),e.render(o,te),e.setRenderTarget(null)}function p(e,a,t){return new X({vertexShader:t||ze,fragmentShader:e,uniforms:Object.assign({texelSize:{value:new f}},a),depthTest:!1,depthWrite:!1})}function Ue(){const a=document.createElement("canvas");a.width=512,a.height=512;const t=a.getContext("2d");t.fillStyle="#000",t.fillRect(0,0,512,512);const i=Math.floor(512*.078),o=Math.floor(i*.13),l=i+o,g=i*.28,ne=[[0,0],[0,1],[0,2],[0,3],[1,0],[1,1],[1,4],[2,0],[2,5],[3,0],[3,5],[4,0],[4,5],[5,0],[5,1],[5,4],[6,0],[6,1],[6,2],[6,3]],se=6,ue=7,ce=se*l-o,ve=ue*l-o,de=(512-ce)/2,pe=(512-ve)/2;t.fillStyle="#ff0000",ne.forEach(([fe,me])=>{const ge=de+me*l,he=pe+fe*l;t.beginPath(),t.roundRect(ge,he,i,i,g),t.fill()});const S=document.createElement("canvas");S.width=512,S.height=512;const H=S.getContext("2d");H.filter="blur(10px)",H.drawImage(a,0,0),t.clearRect(0,0,512,512),t.fillStyle="#000",t.fillRect(0,0,512,512),t.filter="blur(5px)",t.drawImage(S,0,0);const A=new we(a);return A.needsUpdate=!0,A}const T=128,L=128,N=512,E=512;let r,D,P,I,m,y;function Be(e){r=C(T,L),D=C(T,L),P=R(T,L,W),I=R(T,L,W),m=C(N,E),y=C(N,E);const a=p(`
+`,le=new n(2,2),w=new d;w.position.z=1;function T(e,t,n){let i=new c(le,t),a=new r;a.add(i),e.setRenderTarget(n||null),e.render(a,w),e.setRenderTarget(null)}function E(e,t,n){return new i({vertexShader:n||ce,fragmentShader:e,uniforms:Object.assign({texelSize:{value:new s}},t),depthTest:!1,depthWrite:!1})}function ue(){let e=document.createElement(`canvas`);e.width=512,e.height=512;let t=e.getContext(`2d`);t.fillStyle=`#000`,t.fillRect(0,0,512,512),t.fillStyle=`#ff0000`,[[0,0],[0,1],[0,2],[0,3],[1,0],[1,1],[1,4],[2,0],[2,5],[3,0],[3,5],[4,0],[4,5],[5,0],[5,1],[5,4],[6,0],[6,1],[6,2],[6,3]].forEach(([e,n])=>{let r=126.5+n*44,i=104.5+e*44;t.beginPath(),t.roundRect(r,i,39,39,10.920000000000002),t.fill()});let n=document.createElement(`canvas`);n.width=512,n.height=512;let r=n.getContext(`2d`);r.filter=`blur(10px)`,r.drawImage(e,0,0),t.clearRect(0,0,512,512),t.fillStyle=`#000`,t.fillRect(0,0,512,512),t.filter=`blur(5px)`,t.drawImage(n,0,0);let i=new ne(e);return i.needsUpdate=!0,i}var D=128,O=128,k=512,A=512,j,M,N,P,F,I;function de(e){j=S(D,O),M=S(D,O),N=x(D,O,u),P=x(D,O,u),F=S(k,A),I=S(k,A);let t=E(`
     varying vec2 vUv;
     void main() { gl_FragColor = vec4(vUv, 0.0, 0.0); }
-  `,{},ee);s(e,a,y.read),s(e,a,y.write)}const n=p(`
+  `,{},C);T(e,t,I.read),T(e,t,I.write)}var L=E(`
   uniform sampler2D uTarget;
   uniform float aspectRatio;
   uniform vec3 color;
@@ -281,7 +292,7 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     if (isDye) result = clamp(result, vec3(0.0), vec3(1.0));
     gl_FragColor = vec4(result, 1.0);
   }
-`,{uTarget:{value:null},aspectRatio:{value:1},color:{value:new Q},point:{value:new f},prevPoint:{value:new f},radius:{value:0},isDye:{value:!1}}),U=p(`
+`,{uTarget:{value:null},aspectRatio:{value:1},color:{value:new o},point:{value:new s},prevPoint:{value:new s},radius:{value:0},isDye:{value:!1}}),R=E(`
   uniform sampler2D uVelocity;
   varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
   void main() {
@@ -291,7 +302,7 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     float B = texture2D(uVelocity, vB).x;
     gl_FragColor = vec4(0.5 * (R - L - T + B), 0.0, 0.0, 1.0);
   }
-`,{uVelocity:{value:null}}),w=p(`
+`,{uVelocity:{value:null}}),z=E(`
   uniform sampler2D uVelocity;
   uniform sampler2D uCurl;
   uniform float curlAmount;
@@ -310,7 +321,7 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     vec2 vel = texture2D(uVelocity, vUv).xy;
     gl_FragColor = vec4(vel + force * dt, 0.0, 1.0);
   }
-`,{uVelocity:{value:null},uCurl:{value:null},curlAmount:{value:.001},dt:{value:.016}}),B=p(`
+`,{uVelocity:{value:null},uCurl:{value:null},curlAmount:{value:.001},dt:{value:.016}}),B=E(`
   uniform sampler2D uVelocity;
   varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
   void main() {
@@ -320,7 +331,7 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     float B = texture2D(uVelocity, vB).y;
     gl_FragColor = vec4(0.5 * (R - L + T - B), 0.0, 0.0, 1.0);
   }
-`,{uVelocity:{value:null}}),V=p(`
+`,{uVelocity:{value:null}}),V=E(`
   uniform sampler2D uPressure;
   uniform sampler2D uDivergence;
   varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
@@ -332,7 +343,7 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     float div = texture2D(uDivergence, vUv).x;
     gl_FragColor = vec4((L + R + B + T - div) * 0.25, 0.0, 0.0, 1.0);
   }
-`,{uPressure:{value:null},uDivergence:{value:null}}),M=p(`
+`,{uPressure:{value:null},uDivergence:{value:null}}),H=E(`
   uniform sampler2D uPressure;
   uniform sampler2D uVelocity;
   varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
@@ -344,7 +355,7 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     vec2 vel = texture2D(uVelocity, vUv).xy - vec2(R - L, T - B);
     gl_FragColor = vec4(vel, 0.0, 1.0);
   }
-`,{uPressure:{value:null},uVelocity:{value:null}}),v=p(`
+`,{uPressure:{value:null},uVelocity:{value:null}}),U=E(`
   uniform sampler2D uVelocity;
   uniform sampler2D uSource;
   uniform vec2 texelSize;
@@ -356,7 +367,7 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     gl_FragColor = texture2D(uSource, coord) * dissipation;
     gl_FragColor.a = 1.0;
   }
-`,{uVelocity:{value:null},uSource:{value:null},dt:{value:.016},dissipation:{value:1}}),_=p(`
+`,{uVelocity:{value:null},uSource:{value:null},dt:{value:.016},dissipation:{value:1}}),W=E(`
   uniform float dtRatio;
   uniform sampler2D tDiffuse;
   uniform sampler2D tVel;
@@ -367,15 +378,15 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     vec2 prevUV = prev.rg;
     vec2 prevVel = prev.ba;
     vec2 disp = vUv - prevUV;
-    vec2 dispNor = clamp(normalize(disp), vec2(-1.0), vec2(1.0));
     float len = length(disp);
+    vec2 dispNor = len > 0.00001 ? disp / len : vec2(0.0);
     prevVel += dispNor * (len * 0.03) * dtRatio;
     prevVel += vel * -0.00002 * dtRatio;
     prevVel *= exp2(log2(0.925) * dtRatio);
     prevUV += prevVel * dtRatio;
     gl_FragColor = vec4(prevUV, prevVel);
   }
-`,{dtRatio:{value:1},tDiffuse:{value:null},tVel:{value:null}}),h=new f(1/T,1/L),G=new f(1/N,1/E);function ae(e,a,t,i,o){const l=window.innerWidth/window.innerHeight;n.uniforms.texelSize.value=h,n.uniforms.uTarget.value=r.read.texture,n.uniforms.aspectRatio.value=l,n.uniforms.point.value.set(a,t),n.uniforms.prevPoint.value.set(a-i,t-o),n.uniforms.color.value.set(i*500,o*500,0),n.uniforms.radius.value=.25,n.uniforms.isDye.value=!1,s(e,n,r.write),r.swap(),n.uniforms.uTarget.value=m.read.texture,n.uniforms.color.value.set(.8,.8,.8),n.uniforms.radius.value=.25,n.uniforms.isDye.value=!0,s(e,n,m.write),m.swap()}function Oe(e,a){U.uniforms.texelSize.value=h,U.uniforms.uVelocity.value=r.read.texture,s(e,U,I),w.uniforms.texelSize.value=h,w.uniforms.uVelocity.value=r.read.texture,w.uniforms.uCurl.value=I.texture,w.uniforms.dt.value=a,s(e,w,r.write),r.swap(),B.uniforms.texelSize.value=h,B.uniforms.uVelocity.value=r.read.texture,s(e,B,P);for(let t=0;t<2;t++)V.uniforms.texelSize.value=h,V.uniforms.uPressure.value=D.read.texture,V.uniforms.uDivergence.value=P.texture,s(e,V,D.write),D.swap();M.uniforms.texelSize.value=h,M.uniforms.uPressure.value=D.read.texture,M.uniforms.uVelocity.value=r.read.texture,s(e,M,r.write),r.swap(),v.uniforms.texelSize.value=h,v.uniforms.uVelocity.value=r.read.texture,v.uniforms.uSource.value=r.read.texture,v.uniforms.dt.value=a,v.uniforms.dissipation.value=.97,s(e,v,r.write),r.swap(),v.uniforms.texelSize.value=G,v.uniforms.uVelocity.value=r.read.texture,v.uniforms.uSource.value=m.read.texture,v.uniforms.dissipation.value=.93,s(e,v,m.write),m.swap(),_.uniforms.texelSize.value=G,_.uniforms.tDiffuse.value=y.read.texture,_.uniforms.tVel.value=r.read.texture,_.uniforms.dtRatio.value=a*60,s(e,_,y.write),y.swap()}const Ne=`
+`,{dtRatio:{value:1},tDiffuse:{value:null},tVel:{value:null}}),G=new s(1/D,1/O),K=new s(1/k,1/A);function q(e,t,n,r,i){let a=window.innerWidth/window.innerHeight;L.uniforms.texelSize.value=G,L.uniforms.uTarget.value=j.read.texture,L.uniforms.aspectRatio.value=a,L.uniforms.point.value.set(t,n),L.uniforms.prevPoint.value.set(t-r,n-i),L.uniforms.color.value.set(r*500,i*500,0),L.uniforms.radius.value=.25,L.uniforms.isDye.value=!1,T(e,L,j.write),j.swap(),L.uniforms.uTarget.value=F.read.texture,L.uniforms.color.value.set(.8,.8,.8),L.uniforms.radius.value=.25,L.uniforms.isDye.value=!0,T(e,L,F.write),F.swap()}function fe(e,t){R.uniforms.texelSize.value=G,R.uniforms.uVelocity.value=j.read.texture,T(e,R,P),z.uniforms.texelSize.value=G,z.uniforms.uVelocity.value=j.read.texture,z.uniforms.uCurl.value=P.texture,z.uniforms.dt.value=t,T(e,z,j.write),j.swap(),B.uniforms.texelSize.value=G,B.uniforms.uVelocity.value=j.read.texture,T(e,B,N);for(let t=0;t<2;t++)V.uniforms.texelSize.value=G,V.uniforms.uPressure.value=M.read.texture,V.uniforms.uDivergence.value=N.texture,T(e,V,M.write),M.swap();H.uniforms.texelSize.value=G,H.uniforms.uPressure.value=M.read.texture,H.uniforms.uVelocity.value=j.read.texture,T(e,H,j.write),j.swap(),U.uniforms.texelSize.value=G,U.uniforms.uVelocity.value=j.read.texture,U.uniforms.uSource.value=j.read.texture,U.uniforms.dt.value=t,U.uniforms.dissipation.value=.97,T(e,U,j.write),j.swap(),U.uniforms.texelSize.value=K,U.uniforms.uVelocity.value=j.read.texture,U.uniforms.uSource.value=F.read.texture,U.uniforms.dissipation.value=.93,T(e,U,F.write),F.swap(),W.uniforms.texelSize.value=K,W.uniforms.tDiffuse.value=I.read.texture,W.uniforms.tVel.value=j.read.texture,W.uniforms.dtRatio.value=t*60,T(e,W,I.write),I.swap()}var pe=`
   uniform vec3 uColorBg;
   uniform vec2 resolution;
   uniform float uLogoAnimation;
@@ -552,4 +563,4 @@ import{P as j,C as $,W as ye,S as K,T as be,R as k,L as z,a as X,V as f,b as xe,
     gl_FragColor.rgb = bg;
     gl_FragColor.a = 1.0;
   }
-`,Ee=document.getElementById("webgl"),c=new ye({antialias:!1,alpha:!1});c.setPixelRatio(Math.min(window.devicePixelRatio,2));c.setSize(window.innerWidth,window.innerHeight);c.autoClear=!1;Ee.appendChild(c.domElement);const oe=new K,ie=new $;ie.position.z=1;const Pe=new be,Ie=Pe.load("/images/bg4.png",e=>{e.wrapS=k,e.wrapT=k,e.minFilter=z,e.magFilter=z}),Fe=Ue();Be(c);const He=[0,1,2,3][Math.floor(Math.random()*4)],d=new X({extensions:{derivatives:!0},vertexShader:ee,fragmentShader:Ne,uniforms:{tBg:{value:Ie},tLogo:{value:Fe},uColorBg:{value:new q("#000000")},uColorLogo:{value:new q("#ffffff")},uNoise:{value:He},uDye:{value:null},uVel:{value:null},uUV:{value:null},uNoise1Opts:{value:new f(1.25,.25)},uNoise2Opts:{value:new f(2,.8)},uNoise3Opts:{value:new Q(5,2,3.8)},uNoise4Opts:{value:new xe(-3.8,-2,-3.9,-2.5)},uGlobalShape:{value:0},uGlobalOpen:{value:0},uNoiseMultiplier:{value:0},uLogoAnimation:{value:0},resolution:{value:new f(window.innerWidth,window.innerHeight)},time:{value:0}},depthTest:!1,depthWrite:!1,transparent:!1});oe.add(new J(new j(2,2),d));let u={x:0,y:0,hasMoved:!1};window.addEventListener("mousemove",e=>{const a=e.clientX/window.innerWidth,t=1-e.clientY/window.innerHeight;if(u.hasMoved){const i=a-u.x,o=t-u.y;(Math.abs(i)>0||Math.abs(o)>0)&&ae(c,a,t,i,o)}u.x=a,u.y=t,u.hasMoved=!0});window.addEventListener("touchmove",e=>{if(e.touches.length){const a=e.touches[0],t=a.clientX/window.innerWidth,i=1-a.clientY/window.innerHeight;if(u.hasMoved){const o=t-u.x,l=i-u.y;ae(c,t,i,o,l)}u.x=t,u.y=i,u.hasMoved=!0}},{passive:!0});window.addEventListener("resize",()=>{c.setSize(window.innerWidth,window.innerHeight),c.setPixelRatio(Math.min(window.devicePixelRatio,2)),d.uniforms.resolution.value.set(window.innerWidth,window.innerHeight)});function O(e){return 1-Math.pow(1-e,5)}const le=performance.now();let Y=le;setTimeout(()=>{document.getElementById("webgl").classList.add("--visible")},100);setTimeout(()=>{document.getElementById("header").classList.add("--visible")},1250);function re(){requestAnimationFrame(re);const e=performance.now(),a=(e-le)/1e3,t=Math.min((e-Y)/1e3,.033);Y=e;const i=O(Math.min(1,Math.max(0,a/1.5))),o=O(Math.min(1,Math.max(0,(a-.75)/1.75))),l=O(Math.min(1,Math.max(0,(a-.75)/1.75)));d.uniforms.uGlobalShape.value=o,d.uniforms.uNoiseMultiplier.value=l,d.uniforms.uLogoAnimation.value=i,d.uniforms.time.value=a,Oe(c,t),d.uniforms.uDye.value=m.read.texture,d.uniforms.uVel.value=r.read.texture,d.uniforms.uUV.value=y.read.texture,c.setRenderTarget(null),c.render(oe,ie)}re();
+`,me=document.getElementById(`webgl`),J=new ie({antialias:!1,alpha:!1});J.setPixelRatio(Math.min(window.devicePixelRatio,2)),J.setSize(window.innerWidth,window.innerHeight),J.autoClear=!1,me.appendChild(J.domElement);var Y=new r,X=new d;X.position.z=1;var he=new re().load(`/images/bg4.png`,e=>{e.wrapS=f,e.wrapT=f,e.minFilter=t,e.magFilter=t}),ge=ue();de(J);var _e=[0,1,2,3][Math.floor(Math.random()*4)],Z=new i({extensions:{derivatives:!0},vertexShader:C,fragmentShader:pe,uniforms:{tBg:{value:he},tLogo:{value:ge},uColorBg:{value:new l(`#000000`)},uColorLogo:{value:new l(`#ffffff`)},uNoise:{value:_e},uDye:{value:null},uVel:{value:null},uUV:{value:null},uNoise1Opts:{value:new s(1.25,.25)},uNoise2Opts:{value:new s(2,.8)},uNoise3Opts:{value:new o(5,2,3.8)},uNoise4Opts:{value:new a(-3.8,-2,-3.9,-2.5)},uGlobalShape:{value:0},uGlobalOpen:{value:0},uNoiseMultiplier:{value:0},uLogoAnimation:{value:0},resolution:{value:new s(window.innerWidth,window.innerHeight)},time:{value:0}},depthTest:!1,depthWrite:!1,transparent:!1});Y.add(new c(new n(2,2),Z));var Q={x:0,y:0,hasMoved:!1};window.addEventListener(`mousemove`,e=>{let t=e.clientX/window.innerWidth,n=1-e.clientY/window.innerHeight;if(Q.hasMoved){let e=t-Q.x,r=n-Q.y;(Math.abs(e)>0||Math.abs(r)>0)&&q(J,t,n,e,r)}Q.x=t,Q.y=n,Q.hasMoved=!0}),window.addEventListener(`touchmove`,e=>{if(e.touches.length){let t=e.touches[0],n=t.clientX/window.innerWidth,r=1-t.clientY/window.innerHeight;Q.hasMoved&&q(J,n,r,n-Q.x,r-Q.y),Q.x=n,Q.y=r,Q.hasMoved=!0}},{passive:!0}),window.addEventListener(`resize`,()=>{J.setSize(window.innerWidth,window.innerHeight),J.setPixelRatio(Math.min(window.devicePixelRatio,2)),Z.uniforms.resolution.value.set(window.innerWidth,window.innerHeight)});function $(e){return 1-(1-e)**5}var ve=performance.now(),ye=ve;setTimeout(()=>{document.getElementById(`webgl`).classList.add(`--visible`)},100),setTimeout(()=>{document.getElementById(`header`).classList.add(`--visible`)},1250);function be(){requestAnimationFrame(be);let e=performance.now(),t=(e-ve)/1e3,n=Math.min((e-ye)/1e3,.033);ye=e;let r=$(Math.min(1,Math.max(0,t/1.5))),i=$(Math.min(1,Math.max(0,(t-.75)/1.75))),a=$(Math.min(1,Math.max(0,(t-.75)/1.75)));Z.uniforms.uGlobalShape.value=i,Z.uniforms.uNoiseMultiplier.value=a,Z.uniforms.uLogoAnimation.value=r,Z.uniforms.time.value=t,fe(J,n),Z.uniforms.uDye.value=F.read.texture,Z.uniforms.uVel.value=j.read.texture,Z.uniforms.uUV.value=I.read.texture,J.setRenderTarget(null),J.render(Y,X)}be();
