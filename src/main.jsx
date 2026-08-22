@@ -37,17 +37,27 @@ root.innerHTML = `
         <section class="page__content">
           <div class="page__grid">
             <div class="page__col page__col--label">
-              <p class="page__label">Who</p>
+              <h2 class="page__label">Who</h2>
             </div>
             <div class="page__col page__col--text">
-              <p class="page__paragraph">Dontae Lopez is an entrepreneur, researcher, and athlete.</p>
-              <p class="page__paragraph">He is the CEO of <a href="https://threeum.com" target="_blank" rel="noopener noreferrer" class="page__link" style="font-weight:600">Threeum</a>. He is the Creative Director of Muerte Studio. He is a prospect athlete under Mission Twelve and a part of the Ground Zero series.</p>
-              <p class="page__paragraph">He is originally from Colorado, born in Colorado Springs.</p>
+              <p class="page__paragraph">Dontae Lopez is an entrepreneur, researcher, and athlete. He is the founder and CEO of <a href="https://threeum.com" target="_blank" rel="noopener noreferrer" class="page__link" style="font-weight:600">Threeum</a> and the creator of Cyte and Cella. He is also the Creative Director of Muerte Studio, a prospect athlete under Mission Twelve, and part of the Ground Zero series.</p>
+              <p class="page__paragraph">He is originally from Colorado and was born in Colorado Springs.</p>
             </div>
           </div>
           <div class="page__grid">
             <div class="page__col page__col--label">
-              <p class="page__label">Focus</p>
+              <h2 class="page__label">Background</h2>
+            </div>
+            <div class="page__col page__col--text">
+              <p class="page__paragraph">Lopez began his career in equity research and operations. His work later expanded into venture investing, company building, and operating roles across emerging technology. That progression brought together finance, research, and systems thinking, first through evaluating companies and technologies, and later through building new ones.</p>
+              <p class="page__paragraph">Over the past several years, his research has focused increasingly on artificial intelligence, quantum information, computing infrastructure, and the design of systems that operate under uncertainty. His project-based evaluation work included outputs from systems developed by OpenAI, Anthropic, NVIDIA, Meta, ElevenLabs, and Lovable. The work has included model training and evaluation, quality assurance, human-preference research, knowledge-base and infrastructure research, adversarial red teaming, data work, code-generation projects, and testing new model capabilities.</p>
+              <p class="page__paragraph">To supplement his professional work, Lopez pursued a self-directed course of study across artificial intelligence, finance, information systems, cybersecurity, quantum information, infrastructure, and organizational design. It included university coursework, executive education, online courses, and professional certifications selected according to the problems he was working to understand. Rather than following a single institutional track, he assembled the technical, financial, and organizational knowledge needed to pursue the systems he envisioned.</p>
+              <p class="page__paragraph">That work now converges at Threeum, where he is building across software, infrastructure, biological computing, and dynamical hardware.</p>
+            </div>
+          </div>
+          <div class="page__grid">
+            <div class="page__col page__col--label">
+              <h2 class="page__label">Focus</h2>
             </div>
             <div class="page__col page__col--text">
               <p class="page__paragraph">He is drawn to the hardest version of everything. The research that has no clear answer yet. The business that has no playbook. The sport that demands everything and negotiates nothing. The challenge is not a byproduct of the work. It is the point.</p>
@@ -55,12 +65,13 @@ root.innerHTML = `
           </div>
           <div class="page__grid">
             <div class="page__col page__col--label">
-              <p class="page__label">Philosophy</p>
+              <h2 class="page__label">Philosophy</h2>
             </div>
             <div class="page__col page__col--text">
               <p class="page__paragraph">He believes the work speaks for itself if you let it. That means taking the time to get it right, resisting the pressure to move fast when the situation calls for patience, and holding the same standard whether anyone is watching or not. The domain does not matter. The discipline does.</p>
             </div>
           </div>
+          <p class="page__disclaimer">Some artificial intelligence work described on this page was completed on a project basis as an independent contractor. Company names identify the developers of systems evaluated or projects supported. No employment, partnership, sponsorship, or endorsement is implied.</p>
         </section>
       </div>
     </div>
@@ -241,7 +252,7 @@ root.innerHTML = `
         <li><a href="/contact" data-nav="contact">Contact</a></li>
       </ul>
       <ul class="header__nav header__nav--right nav-mobile">
-        <li><a href="javascript:void(0)" id="menuToggle">Menu</a></li>
+        <li><button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button></li>
       </ul>
     </div>
   </header>
@@ -261,10 +272,32 @@ root.innerHTML = `
 //  PAGE ROUTER + TRANSITIONS
 // ═══════════════════════════════════════════════
 
-let currentPage = 'home';
+const pagePaths = {
+  home: '/',
+  about: '/about',
+  contact: '/contact',
+};
+
+function pageFromPath(pathname) {
+  const normalizedPath = pathname.replace(/\/+$/, '') || '/';
+  return Object.entries(pagePaths).find(([, path]) => path === normalizedPath)?.[0] || 'home';
+}
+
+function applyPageTheme(pageName) {
+  const isContentPage = pageName !== 'home';
+  document.documentElement.style.setProperty('--background', isContentPage ? '#fff' : '#000');
+  document.documentElement.style.setProperty('--color', isContentPage ? '#000' : '#fff');
+}
+
+let currentPage = pageFromPath(window.location.pathname);
 let isTransitioning = false;
 
-function navigateTo(pageName) {
+document.querySelectorAll('.page').forEach(page => {
+  page.classList.toggle('--active', page.dataset.page === currentPage);
+});
+applyPageTheme(currentPage);
+
+function navigateTo(pageName, { updateHistory = true } = {}) {
   if (pageName === currentPage || isTransitioning) return;
   isTransitioning = true;
 
@@ -275,6 +308,10 @@ function navigateTo(pageName) {
   const entering = document.querySelector(`.page[data-page="${pageName}"]`);
   if (!entering) { isTransitioning = false; return; }
 
+  if (updateHistory) {
+    window.history.pushState({ page: pageName }, '', pagePaths[pageName]);
+  }
+
   const goingToContent = pageName !== 'home';
   const leavingContent = currentPage !== 'home';
 
@@ -283,8 +320,7 @@ function navigateTo(pageName) {
 
   if (goingToContent) {
     // Set white theme for content pages
-    document.documentElement.style.setProperty('--background', '#fff');
-    document.documentElement.style.setProperty('--color', '#000');
+    applyPageTheme(pageName);
 
     // Clear any inline styles from previous visits
     entering.querySelectorAll('.line__inner').forEach(el => el.removeAttribute('style'));
@@ -303,8 +339,7 @@ function navigateTo(pageName) {
   } else {
     // CONTENT → HOME
     setTimeout(() => {
-      document.documentElement.style.setProperty('--background', '#000');
-      document.documentElement.style.setProperty('--color', '#fff');
+      applyPageTheme(pageName);
       entering.classList.add('--active');
       currentPage = pageName;
       isTransitioning = false;
@@ -318,11 +353,13 @@ function openMobileMenu() {
   menuOpen = true;
   document.getElementById('mobileMenu').classList.add('--open');
   document.getElementById('menuToggle').textContent = 'Close';
+  document.getElementById('menuToggle').setAttribute('aria-expanded', 'true');
 }
 function closeMobileMenu() {
   menuOpen = false;
   document.getElementById('mobileMenu').classList.remove('--open');
   document.getElementById('menuToggle').textContent = 'Menu';
+  document.getElementById('menuToggle').setAttribute('aria-expanded', 'false');
 }
 document.getElementById('menuToggle').addEventListener('click', (e) => {
   e.preventDefault();
@@ -337,6 +374,10 @@ document.querySelectorAll('[data-nav]').forEach(link => {
     e.preventDefault();
     navigateTo(link.dataset.nav);
   });
+});
+
+window.addEventListener('popstate', () => {
+  navigateTo(pageFromPath(window.location.pathname), { updateHistory: false });
 });
 
 // ═══════════════════════════════════════════════
@@ -380,7 +421,13 @@ document.querySelectorAll('.contact-form').forEach(form => {
       headers: { 'Accept': 'application/json' },
       body: data,
     })
-    .then(res => res.json())
+    .then(async res => {
+      const payload = await res.json().catch(() => null);
+      if (!res.ok || payload?.success === false) {
+        throw new Error('Form submission failed');
+      }
+      return payload;
+    })
     .then(() => {
       btn.textContent = 'Sent';
       btn.classList.add('--sent');
@@ -712,8 +759,8 @@ const uvMat = makeMat(`
     vec2 prevUV = prev.rg;
     vec2 prevVel = prev.ba;
     vec2 disp = vUv - prevUV;
-    vec2 dispNor = clamp(normalize(disp), vec2(-1.0), vec2(1.0));
     float len = length(disp);
+    vec2 dispNor = len > 0.00001 ? disp / len : vec2(0.0);
     prevVel += dispNor * (len * 0.03) * dtRatio;
     prevVel += vel * -0.00002 * dtRatio;
     prevVel *= exp2(log2(0.925) * dtRatio);

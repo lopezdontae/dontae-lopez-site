@@ -173,6 +173,14 @@ ul { list-style: none; padding: 0; }
 }
 .page__paragraph:last-child { margin-bottom: 0; }
 
+.page__disclaimer {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 1.5rem 0 0;
+  max-width: 48rem;
+  font: 400 0.6875rem/1.55 'Inter', sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+}
+
 .page__link {
   font: 400 1.1rem/1.8 'Inter', sans-serif;
   display: inline-block;
@@ -437,6 +445,16 @@ ul { list-style: none; padding: 0; }
 .header__nav li a:hover::after {
   transform: scaleX(1);
   transform-origin: left center;
+}
+
+.menu-toggle {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--color);
+  font: 400 0.875rem/1 'Inter', sans-serif;
+  cursor: pointer;
 }
 
 .header__ind {
