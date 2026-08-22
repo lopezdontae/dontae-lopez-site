@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint src/main.jsx vite.config.js --max-warnings 0",
+    "build": "vite build && node scripts/generate-route-pages.mjs",
+    "lint": "eslint src/main.jsx scripts/generate-route-pages.mjs vite.config.js --max-warnings 0",
     "qa": "npm run lint && npm run build && npm audit --audit-level=low",
     "preview": "vite preview"
   },
