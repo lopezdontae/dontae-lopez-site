@@ -39,6 +39,7 @@
     <!-- Misc SEO -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
+    <meta name="google-site-verification" content="fTMu5iJsN-PB6qCv0XvNZRkAp6ZYJ9M6vVOReDpWRpQ" />
     <meta name="format-detection" content="telephone=no">
 
     <!-- Security -->
@@ -51,6 +52,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://dontaelopez.com/#person",
       "name": "Dontae Lopez",
       "url": "https://dontaelopez.com",
       "image": "https://dontaelopez.com/og-image.png",
@@ -58,6 +60,7 @@
       "worksFor": [
         {
           "@type": "Organization",
+          "@id": "https://threeum.com/#organization",
           "name": "Threeum",
           "url": "https://threeum.com"
         },
@@ -70,16 +73,6 @@
         "@type": "Organization",
         "name": "Mission Twelve"
       },
-      "homeLocation": {
-        "@type": "Place",
-        "name": "Colorado Springs, Colorado",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Colorado Springs",
-          "addressRegion": "CO",
-          "addressCountry": "US"
-        }
-      },
       "description": "Dontae Lopez is an AI researcher and entrepreneur, founder and CEO of Threeum, and creator of Cyte and Cella.",
       "knowsAbout": ["Artificial Intelligence", "Quantum Information", "Computing Infrastructure", "Biological Computing", "Dynamical Hardware", "Entrepreneurship"],
       "sameAs": [
@@ -91,13 +84,15 @@
     }
     </script>
 
-    <!-- Structured Data: WebSite (enables sitelinks search) -->
+    <!-- Structured Data: official website and its subject -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": "https://dontaelopez.com/#website",
       "name": "Dontae Lopez",
-      "url": "https://dontaelopez.com"
+      "url": "https://dontaelopez.com/",
+      "about": { "@id": "https://dontaelopez.com/#person" }
     }
     </script>
 
