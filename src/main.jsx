@@ -40,8 +40,8 @@ root.innerHTML = `
               <h2 class="page__label">Who</h2>
             </div>
             <div class="page__col page__col--text">
-              <p class="page__paragraph">Dontae Lopez is an entrepreneur, researcher, and athlete. He is the founder and CEO of <a href="https://threeum.com" target="_blank" rel="noopener noreferrer" class="page__link" style="font-weight:600">Threeum</a> and the creator of Cyte and Cella. He is also the Creative Director of Muerte Studio, a prospect athlete under Mission Twelve, and part of the Ground Zero series.</p>
-              <p class="page__paragraph">He is originally from Colorado and was born in Colorado Springs.</p>
+              <p class="page__paragraph">Entrepreneur, Researcher, Athlete</p>
+              <p class="page__paragraph">Dontae Lopez is an AI researcher and entrepreneur, founder and CEO of <a href="https://threeum.com" target="_blank" rel="noopener noreferrer" class="page__link" style="font-weight:600">Threeum</a>, and creator of Cyte and Cella. His work spans artificial intelligence and computing infrastructure, with research interests in biological computing and dynamical hardware.</p>
             </div>
           </div>
           <div class="page__grid">
@@ -49,29 +49,33 @@ root.innerHTML = `
               <h2 class="page__label">Background</h2>
             </div>
             <div class="page__col page__col--text">
-              <p class="page__paragraph">Lopez began his career in equity research and operations. His work later expanded into venture investing, company building, and operating roles across emerging technology. That progression brought together finance, research, and systems thinking, first through evaluating companies and technologies, and later through building new ones.</p>
-              <p class="page__paragraph">Over the past several years, his research has focused increasingly on artificial intelligence, quantum information, computing infrastructure, and the design of systems that operate under uncertainty. His project-based evaluation work included outputs from systems developed by OpenAI, Anthropic, NVIDIA, Meta, ElevenLabs, and Lovable. The work has included model training and evaluation, quality assurance, human-preference research, knowledge-base and infrastructure research, adversarial red teaming, data work, code-generation projects, and testing new model capabilities.</p>
-              <p class="page__paragraph">To supplement his professional work, Lopez pursued a self-directed course of study across artificial intelligence, finance, information systems, cybersecurity, quantum information, infrastructure, and organizational design. It included university coursework, executive education, online courses, and professional certifications selected according to the problems he was working to understand. Rather than following a single institutional track, he assembled the technical, financial, and organizational knowledge needed to pursue the systems he envisioned.</p>
-              <p class="page__paragraph">That work now converges at Threeum, where he is building across software, infrastructure, biological computing, and dynamical hardware.</p>
+              <p class="page__paragraph">He began his career in equity research and operations before expanding into venture investing, company building, and technology research. That background informs his approach to connecting technical development with the financial and organizational decisions required to bring it into use.</p>
             </div>
           </div>
           <div class="page__grid">
             <div class="page__col page__col--label">
-              <h2 class="page__label">Focus</h2>
+              <h2 class="page__label">Research</h2>
             </div>
             <div class="page__col page__col--text">
-              <p class="page__paragraph">He is drawn to the hardest version of everything. The research that has no clear answer yet. The business that has no playbook. The sport that demands everything and negotiates nothing. The challenge is not a byproduct of the work. It is the point.</p>
+              <p class="page__paragraph">At Threeum, he works across AI, software, and computing infrastructure, alongside research into biological computing and dynamical hardware. Selected research and project details are omitted to respect confidentiality obligations.</p>
             </div>
           </div>
           <div class="page__grid">
             <div class="page__col page__col--label">
-              <h2 class="page__label">Philosophy</h2>
+              <h2 class="page__label">Beyond Work</h2>
             </div>
             <div class="page__col page__col--text">
-              <p class="page__paragraph">He believes the work speaks for itself if you let it. That means taking the time to get it right, resisting the pressure to move fast when the situation calls for patience, and holding the same standard whether anyone is watching or not. The domain does not matter. The discipline does.</p>
+              <p class="page__paragraph">Outside his research and business work, Dontae is the Creative Director of Muerte Studio, a prospect athlete under Mission Twelve, and part of the Ground Zero series. He is originally from Colorado Springs, Colorado.</p>
             </div>
           </div>
-          <p class="page__disclaimer">Some artificial intelligence work described on this page was completed on a project basis as an independent contractor. Company names identify the developers of systems evaluated or projects supported. No employment, partnership, sponsorship, or endorsement is implied.</p>
+          <div class="page__grid">
+            <div class="page__col page__col--label">
+              <h2 class="page__label">Contact</h2>
+            </div>
+            <div class="page__col page__col--text">
+              <p class="page__paragraph">For research collaborations, business opportunities, or sponsorship inquiries, <a href="/contact" data-nav="contact" class="page__link">get in touch</a>.</p>
+            </div>
+          </div>
         </section>
       </div>
     </div>
