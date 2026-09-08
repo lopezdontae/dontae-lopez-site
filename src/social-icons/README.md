@@ -1,0 +1,1 @@
+Brand icons from Simple Icons (CC0): https://github.com/simple-icons/simple-icons. Retrieved September 8, 2026. LinkedIn icon retained from the existing site. Brand names and logos remain the property of their owners.
