@@ -1,5 +1,4 @@
 import substackIcon from './social-icons/substack.svg?raw';
-import newsletterIcon from './social-icons/newsletter.svg?raw';
 import youtubeIcon from './social-icons/youtube.svg?raw';
 import instagramIcon from './social-icons/instagram.svg?raw';
 import tiktokIcon from './social-icons/tiktok.svg?raw';
@@ -14,8 +13,7 @@ import indiehackersIcon from './social-icons/indiehackers.svg?raw';
 import redditIcon from './social-icons/reddit.svg?raw';
 
 export const socialLinks = [
-  { icon: substackIcon, name: "Substack", detail: "Essays & everything I\u2019m making", url: "https://lopezdontae.substack.com", featured: true },
-  { icon: newsletterIcon, name: "Off Script By Dontae", detail: "1\u20133 minute thoughts. The occasional detour.", url: "https://off-script-by-dontae.beehiiv.com", featured: true },
+  { icon: substackIcon, name: "Substack", detail: "Essays & everything I\u2019m making", url: "https://dontaelopez.substack.com", featured: true },
   { icon: youtubeIcon, name: "YouTube", detail: "@lopezdontae", url: "https://www.youtube.com/@lopezdontae", featured: false },
   { icon: youtubeIcon, name: "Taysonlyfun", detail: "Random videos. A little less polished, a little more me.", url: "https://www.youtube.com/@taysonlyfun", featured: false },
   { icon: instagramIcon, name: "Instagram", detail: "@lopezdontae", url: "https://www.instagram.com/lopezdontae/", featured: false },
