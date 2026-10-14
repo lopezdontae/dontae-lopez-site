@@ -25,7 +25,7 @@ export const socialLinks = [
   { icon: facebookIcon, name: "Facebook", detail: "Dontae X.Y. Lopez \u00b7 Creator page", url: "https://www.facebook.com/lopezdontae", featured: false },
   { icon: snapchatIcon, name: "Snapchat", detail: "@lopezdontae", url: "https://www.snapchat.com/add/lopezdontae", featured: false },
   { icon: redditIcon, name: 'Reddit', detail: 'u/lopezdontae', url: 'https://www.reddit.com/user/lopezdontae/', featured: false },
-  { icon: indiehackersIcon, name: "Indie Hackers", detail: "Building & sharing what I learn", url: "https://www.indiehackers.com/SkillIssue", featured: false }
+  { icon: indiehackersIcon, name: "Indie Hackers", detail: "Building & sharing what I learn", url: "https://www.indiehackers.com/lopezdontae", featured: false }
 ];
 
 function iconMarkup(icon) {
